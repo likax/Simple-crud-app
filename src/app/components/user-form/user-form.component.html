@@ -1,0 +1,85 @@
+<!--TODO popup gavxadot ro tyuilad adgili ar daikavos da UX-s pontshic focusi movaxdinot formaze-->
+<div class="overlay">
+
+
+  <div class="user-form">
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form.valid)" novalidate>
+      <div class="form-block">
+<!--         TODO tu ori archevani aqvs barem radio iyos-->
+        <label>Type</label>
+        <input
+          type="radio"
+          [checked]="user.type === 'VISA'"
+          (click)="user.type = 'VISA'"
+          name="type-visa"
+          id="type-visa"
+          value="VISA"
+        />
+        <label for="type-visa">VISA</label>
+        <input
+          type="radio"
+          [checked]="user.type === 'MASTERCARD'"
+          (click)="user.type = 'MASTERCARD'"
+          name="type-master"
+          id="type-master"
+          value="MASTERCARD"
+        />
+        <label for="type-master">MASTERCARD</label>
+      </div>
+      <div class="form-block" [ngClass]="{'error': form.submitted && !name.valid}">
+
+        <label for="name">CardHolder</label>
+        <input
+          type="text"
+          name="cardHolder"
+          id="name"
+          #name="ngModel"
+          placeholder="Enter CardHolder"
+          [(ngModel)]="user.cardHolder"
+
+          required
+        />
+      </div>
+      <div class="form-block" [ngClass]="{'error': cnumber.touched && !cnumber.valid}">
+
+        <label for="cnumber">CardNumber</label>
+        <input
+          type="tel"
+          name="cardNumber"
+          id="cnumber"
+          #cnumber="ngModel"
+          minlength="16"
+          maxlength="16"
+          placeholder="Enter CardNumber (lenght: 16)"
+          [(ngModel)]="user.cardNumber"
+          required
+        />
+      </div>
+      <div class="form-block"  [ngClass]="{'error': expiration.touched && !expiration.valid}">
+<!--        TODO patterni regexia da amowmebs ro sworad sheiyvanos -->
+        <label for="expiration">Expiration</label>
+
+        <input
+          type="text"
+          name="expiration"
+          id="expiration"
+          #expiration="ngModel"
+          pattern="^((0[1-9])|(1[0-2]))[\/]*((0[8-9])|(1[1-9]))$"
+          placeholder="Enter Expiration for example: 02 / 21"
+          [(ngModel)]="user.expiration"
+          required
+        />
+      </div>
+
+      <!-- <input type="date" name="date" [(ngModel)]="date"> -->
+      <button type="submit" class="btn">Add</button>
+      <button type="button" (click)="formOutput.emit(null)" class="btn yellow">
+        Cancel
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<!-- pattern="[0-9\s]{13,19}"  -->

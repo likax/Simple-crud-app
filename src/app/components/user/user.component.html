@@ -1,0 +1,56 @@
+<!--  <div class="user-form">-->
+<!--    <form #form="ngForm" (ngSubmit)="onSubmit()">-->
+<!--      <label for="type">Type</label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        name="type"-->
+<!--        id="type"-->
+<!--        [(ngModel)]="type"-->
+<!--        required-->
+<!--      />-->
+<!--      <label for="name">CardHolder</label>-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        name="cardHolder"-->
+<!--        id="name"-->
+<!--        [(ngModel)]="cardHolder"-->
+<!--        required-->
+<!--      />-->
+<!--      <label for="cnumber">CardNumber</label>-->
+<!--      <input-->
+<!--        type="number"-->
+<!--        name="cardNumber"-->
+<!--        id="cnumber"-->
+<!--        [(ngModel)]="cardNumber"-->
+<!--        required-->
+<!--      />-->
+<!--      <label for="expiration">Expiration</label>-->
+
+<!--      <input-->
+<!--        type="text"-->
+<!--        name="expiration"-->
+<!--        id="expiration"-->
+<!--        [(ngModel)]="expiration"-->
+<!--        required-->
+<!--      />-->
+<!--      <div class="warning-text" *ngIf="!form.valid">Please do not leave blank</div>-->
+<!--      <button type="submit" [disabled]="!form.valid" class="btn">Update</button>-->
+<!--      <button type="button" [hidden]="!this.cardHolder" class="btn yellow" (click)="clearState()">-->
+<!--        Clear-->
+<!--      </button>-->
+<!--    </form>-->
+<!--  </div>-->
+
+
+<div class="users-card"
+     [ngStyle]="{
+     'background': user.type == 'MASTERCARD' ? 'linear-gradient(225deg, #e89214 0%, #d28556 100%)': 'linear-gradient(to right, #0f2027, #203a43, #2c5364)'}">
+  <img src="../../../assets/chip.png" alt="">
+  <p>Card Type: {{user.type}}</p>
+  <p>CardHolder: {{user.cardHolder}}</p>
+  <p>CardNumber:{{user.cardNumber }}</p>
+  <p>Expiration: {{user.expiration}}</p>
+  <button *ngIf="viewMode" class="btn yellow" (click)="onSelect(user)">Edit User</button>
+  <button *ngIf="viewMode" class="btn red" (click)="onDelete(user)">Delete User</button>
+</div>
+<app-user-form *ngIf="popupActive" [user]="userToEdit" (formOutput)="popupResponse($event)"></app-user-form>

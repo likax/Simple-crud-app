@@ -1,0 +1,46 @@
+<p class="user-text">Users</p>
+
+<div class="buttons">
+<button class="button" (click)="formActive = true">ADD USER</button>
+</div>
+<div class="main">
+
+  <!--  TODO unordered listebs gadauyvebi ngfor-it, roca list itemebs unda gadauyvebode-->
+
+
+  <!--<ul class="users-card" *ngFor="let user of users; index as i"-->
+  <!--[ngStyle]="{-->
+  <!--  'background': user.type == 'MASTERCARD' ? 'linear-gradient(225deg, #e89214 0%, #d28556 100%)': 'linear-gradient(to right, #0f2027, #203a43, #2c5364)'}">-->
+  <!--  <img src="../../../assets/chip.png" alt="">-->
+  <!--  <li>-->
+  <!--    <p>Card Type: {{user.type}}</p>-->
+  <!--    <p>CardHolder: {{user.cardHolder}}</p>-->
+  <!--    <p>CardNumber:{{user.cardNumber }}</p>-->
+  <!--    <p>Expiration: {{user.expiration}}</p>-->
+  <!--    <button class="btn yellow" (click)="onSelect(user)" [routerLink]="['/users',user.id]">Edit User</button>-->
+  <!--    <button class="btn red" (click)="onDelete(user)">Delete User</button>-->
+  <!--  </li>-->
+  <!--</ul>-->
+
+<!-- TODO shegedzlo ase gageketebina-->
+
+<!--  <ul>-->
+<!--    <li class="users-card" *ngFor="let user of users; index as i"-->
+<!--        [ngStyle]="{-->
+<!--     'background': user.type == 'MASTERCARD' ? 'linear-gradient(225deg, #e89214 0%, #d28556 100%)': 'linear-gradient(to right, #0f2027, #203a43, #2c5364)'}">-->
+<!--      <img src="../../../assets/chip.png" alt="">-->
+<!--      <p>Card Type: {{user.type}}</p>-->
+<!--      <p>CardHolder: {{user.cardHolder}}</p>-->
+<!--      <p>CardNumber:{{user.cardNumber }}</p>-->
+<!--      <p>Expiration: {{user.expiration}}</p>-->
+<!--      <button class="btn yellow" (click)="onSelect(user)" [routerLink]="['/users',user.id]">Edit User</button>-->
+<!--      <button class="btn red" (click)="onDelete(user)">Delete User</button>-->
+<!--    </li>-->
+<!--  </ul>-->
+
+<!--  TODO uketesia ase :d-->
+
+  <app-user *ngFor="let user of users" [user]="user" [routerLink]="'/users/' + user.id" [viewMode]="false"></app-user>
+</div>
+<app-user-form *ngIf="formActive" (formOutput)="addUser($event)"></app-user-form>
+
